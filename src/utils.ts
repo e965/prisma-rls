@@ -104,6 +104,11 @@ export async function mapObjectValues<Object extends Record<string, unknown>, Tr
   object: Object,
   iteratee: (item: ObjectEntry<Object>) => Promise<TransformedValue>,
 ): Promise<Record<keyof Object, TransformedValue>> {
+  if (object === undefined) {
+    // TODO: change types instead
+    return undefined as unknown as Record<keyof Object, TransformedValue>;
+  }
+
   const entries = Object.entries(object) as ObjectEntry<Object>[];
 
   const transformedEntries = await Promise.all(
