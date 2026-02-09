@@ -2,7 +2,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { ITXClientDenyList } from "@prisma/client/runtime/client";
 
 import { Prisma, PrismaClient } from "../db/__generated__/client";
-import { AuthorizationError, createRlsExtension, PermissionsConfig } from "../src";
+import { createRlsExtension, PermissionsConfig } from "../src";
 import { isObject } from "../src/utils";
 import { denyPermissions } from "./consts";
 import { dmmf } from "./fixtures/dmmf";
