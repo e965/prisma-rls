@@ -1,0 +1,55 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - '*'
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18.1
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgrespass
+          POSTGRES_DB: rls_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    env:
+      DATABASE_URL: postgres://postgres:postgrespass@127.0.0.1:5432/rls_test
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: "package.json"
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Migrate database
+        run: yarn migrate
+      
+      - name: Seed database
+        run: yarn seed
+
+      - name: Run tests
+        run: yarn test

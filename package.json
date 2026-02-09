@@ -1,6 +1,7 @@
 {
   "name": "prisma-rls",
   "version": "0.5.5",
+  "type": "module",
   "description": "Prisma client extension for row-level security on any database",
   "license": "MIT",
   "keywords": [
@@ -18,30 +19,33 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": "~24.13.0"
+  },
   "scripts": {
     "build": "rm -rf dist && tsc",
     "build:watch": "rm -rf dist && tsc --watch",
     "lint": "yarn biome check",
     "lint:fix": "yarn biome check --write",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "node --env-file .env ./node_modules/.bin/vitest",
+    "prisma:generate": "prisma generate && biome check --write ./tests/fixtures/dmmf.ts",
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:migrate:reset": "prisma migrate reset",
+    "prisma:db:seed": "prisma db seed"
   },
   "peerDependencies": {
-    "@prisma/client": ">=4.16.1"
+    "@prisma/client": ">=7.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.2",
-    "@prisma/client": "^6.2.1",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.7",
-    "jest": "^29.7.0",
-    "prisma": "^6.2.1",
-    "ts-jest": "^29.1.2",
+    "@biomejs/biome": "2.3.14",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "@prisma/generator-helper": "^7.3.0",
+    "@types/node": "^25.2.2",
+    "prisma": "^7.3.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
-  },
-  "prisma": {
-    "schema": "db/schema.prisma",
-    "seed": "ts-node db/seed.ts"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }

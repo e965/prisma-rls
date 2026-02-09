@@ -10,6 +10,8 @@ Note that this extension doesn't apply to raw queries. For those, you must handl
 
 ## Quick start
 
+> ⚠️ For Prisma versions older than 7, please use `prisma-rls@0.5.5`.
+
 Define shared types:
 
 ```typescript

@@ -1,6 +1,6 @@
-import type { Prisma, PrismaClientExtends } from "@prisma/client/extension";
+import { Prisma, PrismaClientExtends } from "@prisma/client/extension";
 
-import { AllOperationsArgs, DMMF, DMMFField, FieldsMap, ObjectEntry } from "./types";
+import { AllOperationsArgs, DMMF, DMMFField, FieldsMap, ObjectEntry } from "./types.js";
 
 export function buildFieldsMap(dmmf: DMMF): FieldsMap {
   const fieldsMap: FieldsMap = {};

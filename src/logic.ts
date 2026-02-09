@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client/extension";
 
-import { ReferentialIntegrityError } from "./errors";
+import { ReferentialIntegrityError } from "./errors.js";
 import type {
   FieldsMap,
   ModelCreateInput,
@@ -18,7 +18,7 @@ import type {
   PrismaTypeMap,
   RecursiveContext,
   RelationMetadata,
-} from "./types";
+} from "./types.js";
 import {
   generateImpossibleWhere,
   getUniqueField,
@@ -31,7 +31,7 @@ import {
   resolvePermissionDefinition,
   transformValue,
   uniqueArray,
-} from "./utils";
+} from "./utils.js";
 
 export class ModelResolver {
   constructor(
