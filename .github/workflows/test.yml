@@ -46,10 +46,10 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Migrate database
-        run: yarn migrate
+        run: yarn prisma:migrate:dev
       
       - name: Seed database
-        run: yarn seed
+        run: yarn prisma:db:seed
 
       - name: Run tests
         run: yarn test
