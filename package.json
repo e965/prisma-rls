@@ -25,8 +25,9 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "build:watch": "rm -rf dist && tsc --watch",
-    "lint": "yarn biome check",
-    "lint:fix": "yarn biome check --write",
+    "lint": "biome check",
+    "lint:ci": "biome ci --reporter=github",
+    "lint:fix": "biome check --write",
     "typecheck": "tsc --noEmit",
     "test": "node --env-file .env ./node_modules/.bin/vitest",
     "prisma:generate": "prisma generate && biome check --write ./tests/fixtures/dmmf.ts",

@@ -26,7 +26,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run lint
-        run: yarn lint
+        run: yarn lint:ci
 
       - name: Check types
         run: yarn typecheck
