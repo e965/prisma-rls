@@ -45,6 +45,12 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Build project
+        run: yarn build
+
+      - name: Generate Prisma client
+        run: yarn prisma:generate
+
       - name: Migrate database
         run: yarn prisma:migrate:dev
       
