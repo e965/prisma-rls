@@ -27,7 +27,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "prisma:generate": "prisma generate && biome check --write ./tests/fixtures/dmmf.ts",
+    "prisma:generate": "prisma generate",
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:migrate:reset": "prisma migrate reset",
     "prisma:db:seed": "prisma db seed"

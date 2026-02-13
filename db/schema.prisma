@@ -10,7 +10,7 @@ generator client {
 
 generator dmmf {
   provider = "node ./db/generators/dmmf.ts"
-  output   = "../tests/fixtures/dmmf.ts"
+  output   = "./__generated__/dmmf.ts"
 }
 
 datasource db {

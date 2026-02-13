@@ -2,10 +2,10 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { ITXClientDenyList } from "@prisma/client/runtime/client";
 
 import { Prisma, PrismaClient } from "../db/__generated__/client";
+import { dmmf } from "../db/__generated__/dmmf";
 import { createRlsExtension, PermissionsConfig } from "../src";
 import { isObject } from "../src/utils";
 import { denyPermissions } from "./consts";
-import { dmmf } from "./fixtures/dmmf";
 import { PartialPermissionsConfig } from "./types";
 
 const mergeObjectsDeep = (first: Record<string, unknown>, second: Record<string, unknown>) => {
